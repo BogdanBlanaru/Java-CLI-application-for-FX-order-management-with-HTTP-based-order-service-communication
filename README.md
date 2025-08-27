@@ -5,9 +5,9 @@
 [![Maven](https://img.shields.io/badge/Maven-3.8%2B-orange.svg)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)]()
 
-A production-ready, high-performance command-line interface for managing FX orders through RESTful API communication.
+A command-line interface for managing FX orders through RESTful API communication.
 
-## 🚀 Features
+##  Features
 
 ### Core Functionality
 - **Order Management**: Create, cancel, and retrieve FX orders
@@ -32,7 +32,7 @@ A production-ready, high-performance command-line interface for managing FX orde
 - **Error Handling**: Robust error handling and user feedback
 - **Security**: Input validation and secure communication
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -65,13 +65,13 @@ A production-ready, high-performance command-line interface for managing FX orde
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - **Java 21+** (OpenJDK or Oracle JDK)
 - **Maven 3.8+**
 - **Order Service** running on `http://localhost:8888`
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Build the Application
 
@@ -118,7 +118,7 @@ fx-orderbook> summary
 fx-orderbook> exit
 ```
 
-## 🎯 Available Commands
+##  Available Commands
 
 ### Order Management
 
