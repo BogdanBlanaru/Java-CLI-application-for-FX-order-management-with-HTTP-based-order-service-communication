@@ -664,4 +664,4 @@ For performance-related issues, please provide:
 
 ---
 
-**Built with ❤️ using Java 21, Spring Boot 3, and modern development practices.**
+**Built using Java 21, Spring Boot 3, and modern development practices.**
