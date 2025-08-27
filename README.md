@@ -641,15 +641,6 @@ For performance-related issues, please provide:
 3. **Metrics**: Response times, throughput, error rates
 4. **Profiling Data**: JVM metrics, GC logs if available
 
-## 📜 License
-
-This project is proprietary software developed for Profidata technical assessment.
-
-**Restrictions:**
-- ❌ No public distribution
-- ❌ No modification without permission  
-- ❌ For evaluation purposes only
-- ❌ No production use without license
 
 ## 📊 Project Statistics
 
@@ -674,5 +665,3 @@ This project is proprietary software developed for Profidata technical assessmen
 ---
 
 **Built with ❤️ using Java 21, Spring Boot 3, and modern development practices.**
-
-*Last updated: December 2024*
