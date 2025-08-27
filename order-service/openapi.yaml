@@ -1,0 +1,234 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Order-Service - OpenAPI definition",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8888",
+      "description": "Order-Service base url"
+    }
+  ],
+  "paths": {
+    "/createOrder": {
+      "post": {
+        "tags": [
+          "order-request-handler"
+        ],
+        "summary": "Create a new FX order",
+        "operationId": "handleCreateOrder",
+        "requestBody": {
+          "description": "An object, representing the order that should be created. ID should be omitted",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Order"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The newly created order (including its ID)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cancelOrder": {
+      "post": {
+        "tags": [
+          "order-request-handler"
+        ],
+        "summary": "Cancel an existing FX order",
+        "operationId": "handleCancelRequest",
+        "requestBody": {
+          "description": "a String, representing the ID of the order that should be cancelled",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "'true' if the order was found and cancelled, 'false' if no order with the passed ID was found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/supportedCurrencyPairs": {
+      "get": {
+        "tags": [
+          "rate-request-handler"
+        ],
+        "summary": "Returns all currency pairs, supported by the service",
+        "operationId": "handleSupportedCurrencyRequests",
+        "responses": {
+          "200": {
+            "description": "A list, containing all supported currency pairs.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyPair"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/retrieveOrders": {
+      "get": {
+        "tags": [
+          "order-request-handler"
+        ],
+        "summary": "Retrieve all existing FX orders",
+        "operationId": "retrieveOrders",
+        "responses": {
+          "200": {
+            "description": "The list of currently existing FX orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rateSnapshot": {
+      "get": {
+        "tags": [
+          "rate-request-handler"
+        ],
+        "summary": "Returns a snapshot of the current FX rates",
+        "operationId": "handleRateSnapshotRequests",
+        "responses": {
+          "200": {
+            "description": "A list, containing the current FX rates.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FXRate"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Order": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "identifier of the order",
+            "example": "12"
+          },
+          "investmentCcy": {
+            "type": "string",
+            "description": "Currency, in ISO format, that should be invested in",
+            "example": "EUR"
+          },
+          "buy": {
+            "type": "boolean",
+            "description": "true, if the investment represents a buy/purchase"
+          },
+          "counterCcy": {
+            "type": "string",
+            "description": "Investment currency's counter currency, in ISO format",
+            "example": "USD"
+          },
+          "limit": {
+            "type": "number",
+            "description": "Optional limit, that should be applied for the order",
+            "example": 1.21
+          },
+          "validUntil": {
+            "type": "string",
+            "description": "Order's validity date",
+            "example": "24.12.2026"
+          }
+        },
+        "description": "Representation of an FX order"
+      },
+      "CurrencyPair": {
+        "required": [
+          "ccy1",
+          "ccy2"
+        ],
+        "type": "object",
+        "properties": {
+          "ccy1": {
+            "type": "string",
+            "description": "Currency 1 of the pair in ISO format",
+            "example": "EUR"
+          },
+          "ccy2": {
+            "type": "string",
+            "description": "Currency 2 of the pair in ISO format",
+            "example": "USD"
+          }
+        },
+        "description": "Representation of a currency pair"
+      },
+      "FXRate": {
+        "required": [
+          "ask",
+          "bid",
+          "ccyPair"
+        ],
+        "type": "object",
+        "properties": {
+          "ccyPair": {
+            "$ref": "#/components/schemas/CurrencyPair"
+          },
+          "bid": {
+            "type": "number",
+            "description": "Bid price",
+            "example": 0.99
+          },
+          "ask": {
+            "type": "number",
+            "description": "Ask price",
+            "example": 1.01
+          }
+        },
+        "description": "Representation of an FXRate"
+      }
+    }
+  }
+}

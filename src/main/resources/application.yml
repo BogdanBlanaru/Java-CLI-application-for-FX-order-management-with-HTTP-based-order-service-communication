@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: fx-orderbook-cli
+  main:
+    web-application-type: none # Specificăm că nu e o aplicație web
+    banner-mode: off # Dezactivăm banner-ul Spring la pornire
+
+# Configurații specifice aplicației
+fx-orderbook:
+  # Configurare Client HTTP
+  http-client:
+    socket-timeout: 30s
+    connect-timeout: 10s
+    connection-request-timeout: 30s
+    response-timeout: 60s
+    max-connections: 50
+    max-connections-per-route: 10
+
+  # Configurare Cache
+  cache:
+    max-size: 1000
+    expire-after-write: 5m
+
+  # Configurare Order Service
+  order-service:
+    base-url: http://localhost:8888
+    retry-attempts: 3
+    retry-delay: 500ms
+    

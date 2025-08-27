@@ -1,0 +1,13 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+hs_err_pid*
+.DS_Store
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
