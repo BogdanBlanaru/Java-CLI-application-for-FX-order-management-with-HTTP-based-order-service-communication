@@ -5,9 +5,9 @@
 [![Maven](https://img.shields.io/badge/Maven-3.8%2B-orange.svg)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-Proprietary-red.svg)]()
 
-A production-ready, high-performance command-line interface for managing FX orders through RESTful API communication.
+A command-line interface for managing FX orders through RESTful API communication.
 
-## 🚀 Features
+##  Features
 
 ### Core Functionality
 - **Order Management**: Create, cancel, and retrieve FX orders
@@ -32,7 +32,7 @@ A production-ready, high-performance command-line interface for managing FX orde
 - **Error Handling**: Robust error handling and user feedback
 - **Security**: Input validation and secure communication
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -65,13 +65,13 @@ A production-ready, high-performance command-line interface for managing FX orde
 └─────────────────────────────────────────────────────────────┘
 ```
 
-## 📋 Prerequisites
+##  Prerequisites
 
 - **Java 21+** (OpenJDK or Oracle JDK)
 - **Maven 3.8+**
 - **Order Service** running on `http://localhost:8888`
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### 1. Build the Application
 
@@ -118,7 +118,7 @@ fx-orderbook> summary
 fx-orderbook> exit
 ```
 
-## 🎯 Available Commands
+##  Available Commands
 
 ### Order Management
 
@@ -149,7 +149,7 @@ cancel 12345                        # Cancel order with ID 12345
 | `help` | `help` or `?` | Show available commands and usage |
 | `exit` | `exit` or `quit` | Exit the application |
 
-## 📊 Example Output
+##  Example Output
 
 ### Rates Command
 ```
@@ -189,7 +189,7 @@ Total orders: 4
 Unique currency pairs: 2
 ```
 
-## ⚙️ Configuration
+##  Configuration
 
 ### Application Configuration
 
@@ -231,7 +231,7 @@ java -jar target/fx-orderbook-cli-1.0.0.jar --spring.profiles.active=prod
 java -jar target/fx-orderbook-cli-1.0.0.jar --fx-orderbook.order-service.base-url=http://remote-host:8888
 ```
 
-## 🧪 Testing
+##  Testing
 
 ### Run Tests
 
@@ -268,7 +268,7 @@ open target/site/jacoco/index.html
 - **Branch Coverage**: > 70%
 - **Class Coverage**: > 90%
 
-## 📈 Performance & Monitoring
+##  Performance & Monitoring
 
 ### Metrics
 
@@ -410,7 +410,7 @@ java --enable-preview \
   -jar target/fx-orderbook-cli-1.0.0.jar
 ```
 
-## 📚 Technical Implementation Details
+##  Technical Implementation Details
 
 ### Design Patterns Used
 
@@ -445,7 +445,7 @@ java --enable-preview \
 | Metrics | Micrometer | 1.12.2 | Application metrics |
 | Validation | Hibernate Validator | 8.0.1 | Bean validation |
 
-## 🔄 CI/CD Pipeline
+##  CI/CD Pipeline
 
 ### GitHub Actions Workflow
 
@@ -488,15 +488,7 @@ jobs:
           file: ./target/site/jacoco/jacoco.xml
 ```
 
-### Quality Gates
-
-- ✅ All tests must pass
-- ✅ Code coverage > 80%
-- ✅ No critical security vulnerabilities
-- ✅ No high-priority code quality issues
-- ✅ Documentation is up to date
-
-## 🔐 Security Considerations
+##  Security Considerations
 
 ### Input Validation
 - All user inputs are validated and sanitized
@@ -516,7 +508,7 @@ jobs:
 - Secure error messages without internal details
 - Correlation IDs for troubleshooting
 
-## 📖 API Documentation
+##  API Documentation
 
 ### Order Service Client
 
@@ -559,7 +551,7 @@ GET /rateSnapshot
 GET /supportedCurrencyPairs
 ```
 
-## 🎯 Future Enhancements
+##  Future Enhancements
 
 ### Planned Features
 - [ ] **Order Validation**: Real-time validation against supported currency pairs
@@ -585,73 +577,8 @@ GET /supportedCurrencyPairs
 - [ ] **Graceful Updates**: Zero-downtime deployments
 - [ ] **Auto-scaling**: Resource-based scaling recommendations
 
-## 🤝 Contributing
 
-### Development Workflow
-
-1. **Fork** the repository
-2. **Create** a feature branch (`git checkout -b feature/amazing-feature`)
-3. **Follow** the coding standards and write tests
-4. **Commit** changes (`git commit -m 'Add amazing feature'`)
-5. **Push** to branch (`git push origin feature/amazing-feature`)
-6. **Create** a Pull Request
-
-### Code Standards
-
-- **Java**: Follow Google Java Style Guide
-- **Documentation**: Comprehensive JavaDoc for public APIs
-- **Testing**: Minimum 80% code coverage
-- **Git**: Conventional commit messages
-- **Architecture**: Follow existing patterns and principles
-
-### Pull Request Requirements
-
-- ✅ All tests passing
-- ✅ Code coverage maintained
-- ✅ No security vulnerabilities
-- ✅ Documentation updated
-- ✅ Performance impact assessed
-
-## 📞 Support
-
-### Getting Help
-
-- **Documentation**: Check this README and JavaDoc
-- **Issues**: Create GitHub issue for bugs or feature requests
-- **Discussions**: Use GitHub Discussions for questions
-- **Email**: Contact development team for urgent issues
-
-### Reporting Bugs
-
-When reporting bugs, please include:
-
-1. **Environment**: OS, Java version, application version
-2. **Steps to Reproduce**: Detailed reproduction steps
-3. **Expected Behavior**: What should happen
-4. **Actual Behavior**: What actually happens
-5. **Logs**: Relevant log entries (with debug enabled)
-6. **Configuration**: Non-sensitive configuration details
-
-### Performance Issues
-
-For performance-related issues, please provide:
-
-1. **System Specifications**: CPU, memory, network
-2. **Load Characteristics**: Number of orders, request frequency
-3. **Metrics**: Response times, throughput, error rates
-4. **Profiling Data**: JVM metrics, GC logs if available
-
-## 📜 License
-
-This project is proprietary software developed for Profidata technical assessment.
-
-**Restrictions:**
-- ❌ No public distribution
-- ❌ No modification without permission  
-- ❌ For evaluation purposes only
-- ❌ No production use without license
-
-## 📊 Project Statistics
+##  Project Statistics
 
 - **Lines of Code**: ~3,500 (excluding tests and documentation)
 - **Test Coverage**: >85%
@@ -660,19 +587,7 @@ This project is proprietary software developed for Profidata technical assessmen
 - **Runtime Memory**: ~128MB (typical usage)
 - **Startup Time**: <3 seconds
 
-## 🏆 Quality Metrics
-
-| Metric | Target | Current |
-|--------|--------|---------|
-| Code Coverage | >80% | 85% |
-| Cyclomatic Complexity | <10 | 6.2 |
-| Technical Debt | <2h | 1.3h |
-| Security Rating | A | A |
-| Reliability Rating | A | A |
-| Maintainability Rating | A | A |
 
 ---
 
-**Built with ❤️ using Java 21, Spring Boot 3, and modern development practices.**
-
-*Last updated: December 2024*
+**Built using Java 21, Spring Boot 3, and modern development practices.**
