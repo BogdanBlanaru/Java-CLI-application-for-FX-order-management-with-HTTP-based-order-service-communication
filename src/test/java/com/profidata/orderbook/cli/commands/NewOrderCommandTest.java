@@ -27,21 +27,17 @@ class NewOrderCommandTest {
 
   @Test
   void shouldCreateOrderSuccessfully() throws Exception {
-    // Given
     String[] args = {"buy", "EUR", "USD", "1.20", "31.12.2025"};
     Order createdOrder = new Order("123", "EUR", true, "USD", new BigDecimal("1.20"), "31.12.2025");
     when(orderService.createOrder(any())).thenReturn(createdOrder);
 
-    // When
     String result = command.execute(args);
 
-    // Then
     assertThat(result).contains("Order created successfully with ID: 123");
   }
 
   @Test
   void shouldValidateNewOrderArguments() throws Exception {
-    // Test with insufficient arguments - match actual error message
     String[] args = {"buy", "EUR"};
 
     String result = command.execute(args);
@@ -51,7 +47,6 @@ class NewOrderCommandTest {
 
   @Test
   void shouldRejectInvalidOrderType() throws Exception {
-    // Test invalid order type
     String[] args = {"invalid", "EUR", "USD", "1.20", "31.12.2025"};
 
     String result = command.execute(args);
@@ -61,7 +56,6 @@ class NewOrderCommandTest {
 
   @Test
   void shouldRejectSameCurrencies() throws Exception {
-    // Test same currencies - match actual error message
     String[] args = {"buy", "EUR", "EUR", "1.20", "31.12.2025"};
 
     String result = command.execute(args);

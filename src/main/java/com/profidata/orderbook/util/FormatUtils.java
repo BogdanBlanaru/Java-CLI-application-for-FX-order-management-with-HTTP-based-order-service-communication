@@ -10,9 +10,7 @@ import java.util.List;
  */
 public final class FormatUtils {
 
-  private FormatUtils() {
-    // Utility class
-  }
+  private FormatUtils() {}
 
   /** Creates a formatted table with headers and data rows. */
   public static String createTable(String[] headers, List<String[]> rows) {
@@ -20,18 +18,14 @@ public final class FormatUtils {
       return "";
     }
 
-    // Calculate column widths
     int[] widths = calculateColumnWidths(headers, rows);
 
     StringBuilder sb = new StringBuilder();
 
-    // Add header
     sb.append(formatRow(headers, widths)).append("\n");
 
-    // Add separator
     sb.append(createSeparator(widths)).append("\n");
 
-    // Add rows
     for (String[] row : rows) {
       sb.append(formatRow(row, widths)).append("\n");
     }
@@ -43,12 +37,10 @@ public final class FormatUtils {
   private static int[] calculateColumnWidths(String[] headers, List<String[]> rows) {
     int[] widths = new int[headers.length];
 
-    // Initialize with header lengths
     for (int i = 0; i < headers.length; i++) {
       widths[i] = headers[i] != null ? headers[i].length() : 0;
     }
 
-    // Check row data
     for (String[] row : rows) {
       for (int i = 0; i < Math.min(row.length, widths.length); i++) {
         if (row[i] != null) {
@@ -57,9 +49,8 @@ public final class FormatUtils {
       }
     }
 
-    // Add padding
     for (int i = 0; i < widths.length; i++) {
-      widths[i] += 2; // Add 2 spaces padding
+      widths[i] += 2;
     }
 
     return widths;

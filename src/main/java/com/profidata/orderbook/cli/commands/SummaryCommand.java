@@ -19,7 +19,7 @@ public class SummaryCommand extends AbstractCommand {
   private static final String COMMAND_NAME = "summary";
   private static final int EXPECTED_ARGS = 0;
 
-  private final OrderService orderService; // Use service instead of client
+  private final OrderService orderService;
 
   public SummaryCommand(OrderService orderService) {
     this.orderService = orderService;

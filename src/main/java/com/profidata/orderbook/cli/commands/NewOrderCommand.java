@@ -19,7 +19,7 @@ public class NewOrderCommand extends AbstractCommand {
   private static final String COMMAND_NAME = "new";
   private static final int EXPECTED_ARGS = 5;
 
-  private final OrderService orderService; // Use service, not client directly
+  private final OrderService orderService;
 
   public NewOrderCommand(OrderService orderService) {
     this.orderService = orderService;
@@ -62,7 +62,6 @@ public class NewOrderCommand extends AbstractCommand {
           limit,
           validityStr);
 
-      // Use service layer instead of client directly
       Order createdOrder = orderService.createOrder(orderToCreate);
 
       String result = String.format("Order created successfully with ID: %s", createdOrder.id());

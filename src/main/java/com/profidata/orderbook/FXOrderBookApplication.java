@@ -38,7 +38,6 @@ public class FXOrderBookApplication implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    // Get CLI from context and start interactive session
     CommandLineInterface cli = applicationContext.getBean(CommandLineInterface.class);
     cli.start();
   }

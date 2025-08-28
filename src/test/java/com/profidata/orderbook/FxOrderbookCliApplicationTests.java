@@ -7,7 +7,6 @@ class FXOrderBookApplicationTests {
 
   @Test
   void applicationClassExists() {
-    // Just verify the class exists and has main method
     try {
       Class.forName("com.profidata.orderbook.FXOrderBookApplication");
       var mainMethod = FXOrderBookApplication.class.getMethod("main", String[].class);

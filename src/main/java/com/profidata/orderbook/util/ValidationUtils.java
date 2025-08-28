@@ -23,9 +23,7 @@ public final class ValidationUtils {
           "HUF", "RUB", "CNY", "KRW", "INR", "BRL", "MXN", "ZAR", "TRY", "SGD", "HKD", "ILS", "THB",
           "MYR", "PHP", "IDR", "VND");
 
-  private ValidationUtils() {
-    // Utility class - prevent instantiation
-  }
+  private ValidationUtils() {}
 
   /**
    * Validates a currency code format and common usage.
@@ -46,11 +44,7 @@ public final class ValidationUtils {
           fieldName + " must be a 3-letter currency code, got: " + currencyCode);
     }
 
-    // Optional: warn about uncommon currency codes
-    if (!COMMON_CURRENCY_CODES.contains(normalizedCode)) {
-      // For now, just accept it - we could log a warning in production
-      // LOGGER.warn("Uncommon currency code used: {}", normalizedCode);
-    }
+    if (!COMMON_CURRENCY_CODES.contains(normalizedCode)) {}
   }
 
   /**
@@ -142,7 +136,6 @@ public final class ValidationUtils {
       throw new IllegalArgumentException("Order ID too long, maximum 50 characters");
     }
 
-    // Order IDs should be alphanumeric (allowing hyphens and underscores)
     if (!trimmed.matches("^[a-zA-Z0-9_-]+$")) {
       throw new IllegalArgumentException(
           "Order ID can only contain letters, numbers, hyphens, and underscores");

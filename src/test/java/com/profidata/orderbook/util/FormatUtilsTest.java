@@ -19,7 +19,7 @@ class FormatUtilsTest {
     assertThat(table).contains("Name");
     assertThat(table).contains("John");
     assertThat(table).contains("Jane");
-    assertThat(table).contains("-----"); // Separator line
+    assertThat(table).contains("-----");
   }
 
   @Test
@@ -77,7 +77,7 @@ class FormatUtilsTest {
 
     assertThat(centered).hasSize(11);
     assertThat(centered.trim()).isEqualTo("Hello");
-    assertThat(centered).startsWith("   "); // 3 spaces padding
+    assertThat(centered).startsWith("   ");
   }
 
   @Test

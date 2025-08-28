@@ -13,9 +13,7 @@ public final class DateUtils {
   public static final DateTimeFormatter DEFAULT_DATE_FORMATTER =
       DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-  private DateUtils() {
-    // Utility class
-  }
+  private DateUtils() {}
 
   /** Formats a LocalDate to string using default formatter. */
   public static String formatDate(LocalDate date) {
@@ -42,7 +40,7 @@ public final class DateUtils {
     if (date == null) return false;
 
     LocalDate now = LocalDate.now();
-    LocalDate maxFutureDate = now.plusYears(10); // Max 10 years in future
+    LocalDate maxFutureDate = now.plusYears(10);
 
     return !date.isBefore(now) && !date.isAfter(maxFutureDate);
   }

@@ -65,9 +65,7 @@ public interface Command {
    * @param args Command arguments
    * @throws IllegalArgumentException if arguments are invalid
    */
-  default void validateArguments(String[] args) throws IllegalArgumentException {
-    // Default implementation does nothing - override as needed
-  }
+  default void validateArguments(String[] args) throws IllegalArgumentException {}
 }
 
 /** Abstract base class for commands with common functionality. */

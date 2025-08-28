@@ -76,7 +76,6 @@ public class ApplicationConfig {
             .setResponseTimeout(Timeout.of(httpClient.getResponseTimeout()))
             .build();
 
-    // Simple HTTP client without custom retry strategy to avoid compatibility issues
     return HttpClients.custom()
         .setConnectionManager(connectionManager)
         .setDefaultRequestConfig(requestConfig)
@@ -103,7 +102,6 @@ public class ApplicationConfig {
         orderService.getRetryDelay());
   }
 
-  // Getters and setters
   public HttpClientConfig getHttpClient() {
     return httpClient;
   }
@@ -153,7 +151,6 @@ public class ApplicationConfig {
     @Max(100)
     private int maxConnectionsPerRoute = 10;
 
-    // Getters and setters
     public Duration getSocketTimeout() {
       return socketTimeout;
     }

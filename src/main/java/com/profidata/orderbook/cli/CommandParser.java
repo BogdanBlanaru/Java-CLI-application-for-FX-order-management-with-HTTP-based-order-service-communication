@@ -33,7 +33,6 @@ public class CommandParser {
       SummaryCommand summaryCommand) {
     this.commands = new HashMap<>();
 
-    // Register all available commands
     registerCommand(newOrderCommand);
     registerCommand(cancelOrderCommand);
     registerCommand(ratesCommand);
@@ -58,16 +57,14 @@ public class CommandParser {
     String trimmedInput = input.trim();
     LOGGER.debug("Parsing command: {}", trimmedInput);
 
-    // Handle special commands
     if ("help".equalsIgnoreCase(trimmedInput) || "?".equals(trimmedInput)) {
       return generateHelpText();
     }
 
     if ("exit".equalsIgnoreCase(trimmedInput) || "quit".equalsIgnoreCase(trimmedInput)) {
-      return "SYSTEM_EXIT"; // Special marker for clean exit
+      return "SYSTEM_EXIT";
     }
 
-    // Parse command and arguments
     String[] tokens = parseTokens(trimmedInput);
     if (tokens.length == 0) {
       throw new CommandParsingException("No command specified");
@@ -76,7 +73,6 @@ public class CommandParser {
     String commandName = tokens[0].toLowerCase();
     String[] args = Arrays.copyOfRange(tokens, 1, tokens.length);
 
-    // Find and execute command
     Command command = commands.get(commandName);
     if (command == null) {
       throw new CommandParsingException(
@@ -94,8 +90,6 @@ public class CommandParser {
 
   /** Parses input into tokens, handling quoted strings properly. */
   private String[] parseTokens(String input) {
-    // Simple tokenization - split by whitespace
-    // Could be enhanced to handle quoted strings if needed
     return input.trim().split("\\s+");
   }
 
@@ -113,7 +107,6 @@ public class CommandParser {
     sb.append("FX OrderBook CLI - Available Commands:\n");
     sb.append("=====================================\n\n");
 
-    // Group commands by category for better organization
     appendCommandHelp(sb, "Order Management:");
     appendCommandDetails(sb, "new");
     appendCommandDetails(sb, "cancel");

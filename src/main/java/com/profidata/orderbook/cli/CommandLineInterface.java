@@ -60,7 +60,6 @@ public class CommandLineInterface {
     this.errorWriter = new PrintWriter(System.err, true);
     this.running = new AtomicBoolean(false);
 
-    // Initialize metrics
     this.commandsProcessedCounter =
         meterRegistry != null
             ? Counter.builder("cli.commands.processed").register(meterRegistry)
@@ -70,7 +69,6 @@ public class CommandLineInterface {
             ? Counter.builder("cli.commands.errors").register(meterRegistry)
             : null;
 
-    // Setup shutdown hook for graceful termination
     setupShutdownHook();
   }
 
@@ -99,14 +97,12 @@ public class CommandLineInterface {
 
         String input = reader.readLine();
 
-        // Handle EOF (Ctrl+D) or null input
         if (input == null) {
-          writer.println(); // New line for better formatting
+          writer.println();
           LOGGER.info("EOF received, shutting down CLI");
           break;
         }
 
-        // Process the command
         processCommand(input.trim());
 
       } catch (IOException e) {
@@ -120,7 +116,7 @@ public class CommandLineInterface {
   /** Processes a single command input. */
   private void processCommand(String input) {
     if (input.isEmpty()) {
-      return; // Skip empty inputs
+      return;
     }
 
     try {
@@ -128,17 +124,14 @@ public class CommandLineInterface {
 
       String result = commandParser.parseAndExecute(input);
 
-      // Handle special system commands
       if ("SYSTEM_EXIT".equals(result)) {
         writer.println(GOODBYE_MESSAGE);
         stop();
         return;
       }
 
-      // Display command result
       writer.println(result);
 
-      // Update metrics
       incrementCounter(commandsProcessedCounter);
 
     } catch (CommandParsingException e) {
@@ -163,11 +156,9 @@ public class CommandLineInterface {
   private void showWelcomeMessage() {
     writer.println(WELCOME_MESSAGE);
 
-    // Show connection status
     writer.println("Checking connection to order service...");
 
     try {
-      // Quick health check to verify connectivity
       commandParser.parseAndExecute("rates");
       writer.println("✓ Successfully connected to order service");
     } catch (Exception e) {
@@ -218,7 +209,6 @@ public class CommandLineInterface {
                     LOGGER.info("Shutdown signal received, stopping CLI");
                     stop();
 
-                    // Give a moment for graceful shutdown
                     try {
                       Thread.sleep(100);
                     } catch (InterruptedException e) {

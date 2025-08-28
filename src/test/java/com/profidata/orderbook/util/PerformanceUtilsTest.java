@@ -24,7 +24,7 @@ class PerformanceUtilsTest {
     var result = PerformanceUtils.timeExecution(() -> executed.set(true));
 
     assertThat(result.isSuccess()).isTrue();
-    assertThat(result.result()).isNull(); // Runnable returns void
+    assertThat(result.result()).isNull();
     assertThat(result.durationNanos()).isPositive();
     assertThat(executed.get()).isTrue();
   }
@@ -52,19 +52,19 @@ class PerformanceUtilsTest {
 
   @Test
   void shouldFormatMicroseconds() {
-    String formatted = PerformanceUtils.formatDuration(5000); // 5000ns = 5μs
+    String formatted = PerformanceUtils.formatDuration(5000);
     assertThat(formatted).isEqualTo("5.00μs");
   }
 
   @Test
   void shouldFormatMilliseconds() {
-    String formatted = PerformanceUtils.formatDuration(5_000_000); // 5ms
+    String formatted = PerformanceUtils.formatDuration(5_000_000);
     assertThat(formatted).isEqualTo("5.00ms");
   }
 
   @Test
   void shouldFormatSeconds() {
-    String formatted = PerformanceUtils.formatDuration(2_000_000_000L); // 2s
+    String formatted = PerformanceUtils.formatDuration(2_000_000_000L);
     assertThat(formatted).isEqualTo("2.00s");
   }
 

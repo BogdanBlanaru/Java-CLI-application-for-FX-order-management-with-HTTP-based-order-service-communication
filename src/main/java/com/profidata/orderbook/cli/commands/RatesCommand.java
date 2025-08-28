@@ -17,7 +17,7 @@ public class RatesCommand extends AbstractCommand {
   private static final String COMMAND_NAME = "rates";
   private static final int EXPECTED_ARGS = 0;
 
-  private final RateService rateService; // Use service, not client directly
+  private final RateService rateService;
 
   public RatesCommand(RateService rateService) {
     this.rateService = rateService;

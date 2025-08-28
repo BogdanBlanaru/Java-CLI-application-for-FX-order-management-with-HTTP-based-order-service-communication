@@ -15,11 +15,10 @@ import org.springframework.stereotype.Repository;
 public class HttpRateRepository implements RateRepository {
 
   private final OrderServiceClient client;
-  private final RateMapper mapper;
+  private final RateMapper mapper = RateMapper.INSTANCE;
 
-  public HttpRateRepository(OrderServiceClient client, RateMapper mapper) {
+  public HttpRateRepository(OrderServiceClient client) {
     this.client = client;
-    this.mapper = mapper;
   }
 
   @Override

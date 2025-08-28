@@ -28,7 +28,6 @@ class RatesCommandTest {
 
   @Test
   void shouldExecuteRatesCommand() throws Exception {
-    // Given
     var rates =
         List.of(
             new FXRate(
@@ -37,10 +36,8 @@ class RatesCommandTest {
 
     String[] args = {};
 
-    // When
     var result = command.execute(args);
 
-    // Then
     assertThat(result).contains("Current FX Exchange Rates");
     assertThat(result).contains("EUR/USD");
     verify(rateService).getCurrentRates();
@@ -48,15 +45,12 @@ class RatesCommandTest {
 
   @Test
   void shouldHandleEmptyRates() throws Exception {
-    // Given
     when(rateService.getCurrentRates()).thenReturn(List.of());
 
     String[] args = {};
 
-    // When
     var result = command.execute(args);
 
-    // Then
     assertThat(result).contains("No FX rates available at this time");
   }
 

@@ -24,33 +24,26 @@ class CancelOrderCommandTest {
 
   @Test
   void shouldCancelOrderSuccessfully() throws Exception {
-    // Given
     String[] args = {"123"};
     when(orderService.cancelOrder("123")).thenReturn(true);
 
-    // When
     String result = command.execute(args);
 
-    // Then
     assertThat(result).contains("cancelled successfully");
   }
 
   @Test
   void shouldHandleOrderNotFound() throws Exception {
-    // Given
     String[] args = {"999"};
     when(orderService.cancelOrder("999")).thenReturn(false);
 
-    // When
     String result = command.execute(args);
 
-    // Then
     assertThat(result).contains("not found or could not be cancelled");
   }
 
   @Test
   void shouldValidateOrderId() throws Exception {
-    // Test invalid order ID
     String[] args = {"invalid@id"};
 
     String result = command.execute(args);
@@ -60,7 +53,6 @@ class CancelOrderCommandTest {
 
   @Test
   void shouldHandleEmptyArgs() throws Exception {
-    // Test no arguments - match actual error message
     String[] args = {};
 
     String result = command.execute(args);

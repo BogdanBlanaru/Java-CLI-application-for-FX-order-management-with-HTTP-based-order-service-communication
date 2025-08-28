@@ -29,92 +29,75 @@ class RateServiceImplTest {
 
   @Test
   void shouldGetCurrentRates() {
-    // Given
     var rates =
         List.of(
             new FXRate(
                 new CurrencyPair("EUR", "USD"), new BigDecimal("1.19"), new BigDecimal("1.21")));
     when(rateRepository.getCurrentRatesSync()).thenReturn(rates);
 
-    // When
     var result = rateService.getCurrentRates();
 
-    // Then
     assertThat(result).hasSize(1);
-    assertThat(result.get(0).ccyPair().ccy1()).isEqualTo("EUR"); // Corectat aici
+    assertThat(result.get(0).ccyPair().ccy1()).isEqualTo("EUR");
     verify(rateRepository).getCurrentRatesSync();
   }
 
   @Test
   void shouldGetCurrentRatesAsync() {
-    // Given
     var rates =
         List.of(
             new FXRate(
                 new CurrencyPair("EUR", "USD"), new BigDecimal("1.19"), new BigDecimal("1.21")));
     when(rateRepository.getCurrentRates()).thenReturn(CompletableFuture.completedFuture(rates));
 
-    // When
     var resultFuture = rateService.getCurrentRatesAsync();
 
-    // Then
     var result = resultFuture.join();
     assertThat(result).hasSize(1);
-    assertThat(result.get(0).ccyPair().ccy1()).isEqualTo("EUR"); // Corectat aici
+    assertThat(result.get(0).ccyPair().ccy1()).isEqualTo("EUR");
     verify(rateRepository).getCurrentRates();
   }
 
   @Test
   void shouldGetSupportedPairs() {
-    // Given
     var pairs = List.of(new CurrencyPair("EUR", "USD"));
     when(rateRepository.getSupportedPairsSync()).thenReturn(pairs);
 
-    // When
     var result = rateService.getSupportedPairs();
 
-    // Then
     assertThat(result).hasSize(1);
-    assertThat(result.get(0).ccy1()).isEqualTo("EUR"); // Corectat aici
+    assertThat(result.get(0).ccy1()).isEqualTo("EUR");
     verify(rateRepository).getSupportedPairsSync();
   }
 
   @Test
   void shouldGetSupportedPairsAsync() {
-    // Given
     var pairs = List.of(new CurrencyPair("EUR", "USD"));
     when(rateRepository.getSupportedPairs()).thenReturn(CompletableFuture.completedFuture(pairs));
 
-    // When
     var resultFuture = rateService.getSupportedPairsAsync();
 
-    // Then
     var result = resultFuture.join();
     assertThat(result).hasSize(1);
-    assertThat(result.get(0).ccy1()).isEqualTo("EUR"); // Corectat aici
+    assertThat(result.get(0).ccy1()).isEqualTo("EUR");
     verify(rateRepository).getSupportedPairs();
   }
 
   @Test
   void shouldHandleEmptyRatesResponse() {
-    // Given
     when(rateRepository.getCurrentRatesSync()).thenReturn(List.of());
 
-    // When
     var result = rateService.getCurrentRates();
 
-    // Then
     assertThat(result).isEmpty();
     verify(rateRepository).getCurrentRatesSync();
   }
 
   @Test
   void shouldHandleRepositoryException() {
-    // Given
     when(rateRepository.getCurrentRatesSync())
         .thenThrow(new RuntimeException("Service unavailable"));
 
-    // When & Then
     org.junit.jupiter.api.Assertions.assertThrows(
         RuntimeException.class,
         () -> {

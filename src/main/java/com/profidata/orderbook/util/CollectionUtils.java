@@ -13,9 +13,7 @@ import java.util.stream.IntStream;
  */
 public final class CollectionUtils {
 
-  private CollectionUtils() {
-    // Utility class
-  }
+  private CollectionUtils() {}
 
   /** Checks if a collection is null or empty. */
   public static boolean isEmpty(Collection<?> collection) {

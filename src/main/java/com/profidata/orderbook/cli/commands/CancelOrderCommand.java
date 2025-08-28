@@ -15,7 +15,7 @@ public class CancelOrderCommand extends AbstractCommand {
   private static final String COMMAND_NAME = "cancel";
   private static final int EXPECTED_ARGS = 1;
 
-  private final OrderService orderService; // Use service instead of client
+  private final OrderService orderService;
 
   public CancelOrderCommand(OrderService orderService) {
     this.orderService = orderService;

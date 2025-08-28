@@ -9,9 +9,7 @@ import java.util.function.Supplier;
  */
 public final class PerformanceUtils {
 
-  private PerformanceUtils() {
-    // Utility class
-  }
+  private PerformanceUtils() {}
 
   /** Executes a task and measures its execution time. */
   public static <T> TimedResult<T> timeExecution(Supplier<T> task) {

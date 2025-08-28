@@ -84,7 +84,6 @@ class CollectionUtilsTest {
 
   @Test
   void shouldCreateSafeCopyOfList() {
-    // Create mutable original list properly
     var original = new ArrayList<String>();
     original.add("a");
     original.add("b");
@@ -94,13 +93,10 @@ class CollectionUtilsTest {
 
     assertThat(copy).containsExactlyElementsOf(original);
 
-    // Test independence by modifying the original list instead of the copy
-    // (since copy might be immutable, but we can verify they're different instances)
     original.add("d");
     assertThat(original).hasSize(4);
-    assertThat(copy).hasSize(3); // Copy should still have original size
+    assertThat(copy).hasSize(3);
 
-    // Alternative test: verify they're not the same instance
     assertThat(copy).isNotSameAs(original);
   }
 

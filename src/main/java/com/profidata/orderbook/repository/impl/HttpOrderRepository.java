@@ -14,11 +14,10 @@ import org.springframework.stereotype.Repository;
 public class HttpOrderRepository implements OrderRepository {
 
   private final OrderServiceClient client;
-  private final OrderMapper mapper;
+  private final OrderMapper mapper = OrderMapper.INSTANCE;
 
-  public HttpOrderRepository(OrderServiceClient client, OrderMapper mapper) {
+  public HttpOrderRepository(OrderServiceClient client) {
     this.client = client;
-    this.mapper = mapper;
   }
 
   @Override

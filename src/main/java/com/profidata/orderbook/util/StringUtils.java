@@ -7,9 +7,7 @@ package com.profidata.orderbook.util;
  */
 public final class StringUtils {
 
-  private StringUtils() {
-    // Utility class
-  }
+  private StringUtils() {}
 
   /** Checks if a string is null, empty, or contains only whitespace. */
   public static boolean isBlank(String str) {

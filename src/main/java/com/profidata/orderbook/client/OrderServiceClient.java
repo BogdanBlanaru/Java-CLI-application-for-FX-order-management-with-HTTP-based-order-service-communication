@@ -34,8 +34,6 @@ public class OrderServiceClient {
   private final int retryAttempts;
   private final Duration retryDelay;
 
-  // Removed unused MeterRegistry field
-
   public OrderServiceClient(
       CloseableHttpClient httpClient,
       ObjectMapper objectMapper,
